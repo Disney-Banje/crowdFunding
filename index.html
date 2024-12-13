@@ -7,6 +7,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Crowdfunding product page</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 
 
@@ -23,7 +27,7 @@
             </a>
           </div>
           <button type="button">
-            <!-- menu hamburger icon -->
+            <ion-icon name="menu-outline"></ion-icon>
           </button>
         </nav>
       </div>
@@ -32,6 +36,10 @@
     <main>
       <section class="hero-page">
         <!-- only adding the background no element present -->
+         <picture>
+          <source srcset="/images/image-hero-desktop.jpg" media="(min-width: 768px)" />
+          <img src="/images/image-hero-mobile.jpg" alt="product shot">
+         </picture>
       </section>
 
       <section class="page-content">
@@ -45,9 +53,9 @@
               A beautiful handcrafted monitor stand to reduce neck and eye strain.
             </p>
             <div class="cta-group">
-              <button class="cta-btn">Back this project</button>
+              <button class="cta cta-btn">Back this project</button>
               <button class="bookmark-btn">
-                <!-- ion icon bookmark icon -->
+                <ion-icon name="bookmark"></ion-icon>
               </button>
             </div>
           </div>
@@ -59,7 +67,7 @@
             <section class="statistics-comp">
               <div class="stats-elem">
                 <p class="data-sum">
-                  &#163;
+                  $
                   <span class="value">89,914</span>
                 </p>
                 <span class="elem-total">of $100,000 backed</span>
@@ -98,7 +106,7 @@
             <section class="stand-group">
               <article class="bamboo-stand">
                 <h3>Bamboo Stand</h3>
-                <p class="pledge-size">Pledge &#163;25 or more</p>
+                <p class="pledge-size">Pledge $25 or more</p>
                 <p>
                   You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.
                 </p>
@@ -107,7 +115,7 @@
                     <span class="pledge-length">101</span>
                     left
                   </p>
-                  <button class="reward-cta">Select Reward</button>
+                  <button class="cta reward-cta">Select Reward</button>
                 </div>
               </article>
 
@@ -122,7 +130,7 @@
                     <span class="pledge-length">64</span>
                     left
                   </p>
-                  <button class="reward-cta">Select Reward</button>
+                  <button class=" cta reward-cta">Select Reward</button>
                 </div>
               </article>
 
@@ -137,7 +145,7 @@
                     <span class="pledge-length">0</span>
                     left
                   </p>
-                  <button class="outStock-cta">Out of Stock</button>
+                  <button class="cta outStock-cta">Out of Stock</button>
                 </div>
               </article>
             </section>

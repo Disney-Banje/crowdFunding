@@ -32,6 +32,16 @@ html {
     src: url('./font/Commissioner/Commissioner-VariableFont_FLAR,VOLM,slnt,wght.ttf');
 }
 
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: white;
+}
+
 button {
     background-color: transparent;
     border: none;
@@ -44,6 +54,14 @@ img {
 
 picture {
     object-fit: cover;
+    width: 100%;
+    display: block;
+}
+
+picture img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 body {
@@ -64,7 +82,8 @@ header {
 }
 
 header .container {
-    margin: 2.2rem;
+    margin: 2.2rem auto;
+    max-width: 120.5rem;
 }
 
 header nav {
@@ -80,11 +99,13 @@ header ion-icon {
 
 
 .page-content {
+    max-width: 69.5rem;
     display: flex;
     flex-direction: column;
     gap: 2.2rem;
     position: relative;
     top: -5.8rem;
+    margin: auto;
 }
 
 .first-square,
@@ -206,10 +227,13 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
+.heading {
+    margin-bottom: 2.5rem;
+}
+
 .pledge-size {
     color: var(--Moderate-cyan);
     font-weight: var(--font-weight-500);
-    margin-bottom: 2.5rem;
 }
 
 .pledge-action {
@@ -237,4 +261,88 @@ h3 {
 .Mahogany-stand {
     opacity: 0.3;
     position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    nav ul {
+        display: flex;
+        gap: 2.2rem;
+    }
+
+    nav button {
+        display: none;
+    }
+
+    .cta-group {
+        justify-content: space-between;
+    }
+
+    .cta-group .cta-btn {
+        flex: none;
+        width: auto;
+        padding-left: 2.0rem;
+        padding-right: 2.0rem;
+    }
+
+    .hidden {
+        display: inline-block;
+        margin: 0 1.6rem;
+        font-weight: var(--font-weight-700);
+    }
+
+    .extend-btn {
+        background-color: #f4f4f4;
+        color: var(--Dark-gray);
+        border-radius: 2.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .statistics-comp {
+        flex-direction: row;
+        gap: 6.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .statistics-comp .stats-elem:nth-child(2) {
+        border-top: 0;
+        border-bottom: 0;
+
+        border-right: 0.1rem solid var(--Black);
+        border-left: 0.1rem solid var(--Black);
+
+        padding: 0 6.5rem;
+    }
+
+    .stats-elem {
+        padding: 0;
+        width: fit-content;
+        text-align: start;
+    }
+
+    .data-sum {
+        font-size: 3.2rem;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+    }
+
+    .heading,
+    .pledge-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } 
+
+    .pledge-size {
+        align-self: center;
+    }
 }

@@ -82,7 +82,8 @@ header {
 }
 
 header .container {
-    margin: 2.2rem auto;
+    margin: auto;
+    padding: 2.2rem;
     max-width: 120.5rem;
 }
 
@@ -95,6 +96,10 @@ header nav {
 header ion-icon {
     color: white;
     font-size: 2.8rem;
+}
+
+nav ul {
+    display: none;
 }
 
 

@@ -25,6 +25,8 @@ html {
     --font-weight-400: 400;
     --font-weight-500: 500;
     --font-weight-700: 700;
+
+    --transition: all 250ms ease-in-out;
 }
 
 @font-face {
@@ -162,10 +164,19 @@ nav ul {
     border-radius: 2.5rem;
     color: white;
     font-weight: var(--font-weight-700);
+    transition: var(--transition);
+}
+
+.cta:hover {
+    background-color: var(--Dark-cyan);
 }
 
 .cta-group .cta-btn {
     flex: 1;
+}
+
+.bookmark-btn {
+    transition: var(--transition);
 }
 
 .bookmark-btn ion-icon {
@@ -174,6 +185,23 @@ nav ul {
     background-color: var(--Black);
     padding: 1.3rem;
     border-radius: 50%;
+    transition: var(--transition);
+}
+
+.bookmark-btn:hover {
+    ion-icon {
+        background-color: var(--Dark-gray);
+        color: var(--page-background-color);
+    }
+}
+
+.bookmark-btn:active {
+    ion-icon {
+        background-color: var(--Dark-cyan);
+        color: white;
+    }
+
+    color: var(--Dark-cyan);
 }
 
 .statistics-comp {
@@ -263,7 +291,7 @@ h3 {
     background-color: var(--Dark-gray);
 }
 
-.Mahogany-stand {
+.inactive {
     opacity: 0.3;
     position: relative;
 }

@@ -1,28 +1,36 @@
 export class PledgeCard {
-    constructor (pledgeType, description, pledgeNumber, pledgeAmount, isActive) {
+    constructor (pledgeType, description, pledgeNumber, pledgeAmount, isActive, name) {
         this.pledgeType = pledgeType;
         this.description = description;
         this.pledgeNumber = pledgeNumber;
         this.pledgeAmount = pledgeAmount;
         this.isActive = isActive;
+        this.name = name;
     }
 
     createPledgeHeader() {
         const pledgeHeader = document.createElement('div');
         pledgeHeader.classList.add('pledge-header');
         const input = document.createElement('input');
+        input.classList.add('custom-radio');
         input.type = 'radio';
+        input.setAttribute('name', 'pledges');
+        input.setAttribute('id', this.name);
+        if (!this.isActive) {
+            input.setAttribute('disabled', '');
+        }
         pledgeHeader.appendChild(input);
-        const pledgeType = document.createElement('p');
+        const pledgeType = document.createElement('div');
 
-        pledgeType.classList.add('pledgeType');
+        pledgeType.classList.add('pledge-type');
 
-        if (!this.pledgeAmount && !this.pledgeNumber) {
-            pledgeType.textContent = this.pledgeType;
+        if (!this.pledgeAmount) {
+            pledgeType.innerHTML = `
+            <h3>${this.pledgeType}</h3>`;
         } else {
             pledgeType.innerHTML = `
-            <span class='pledge-title'>${this.pledgeType}</span>
-            <span class='pledge-text'>Pledge $${this.pledgeAmount} or more</span>
+            <h3>${this.pledgeType}</h3>
+            <span class='pledge-size'>Pledge $${this.pledgeAmount} or more</span>
             `;
         }
 
@@ -32,38 +40,46 @@ export class PledgeCard {
     }
 
     createCardContent() {
-        const label = document.createElement('label');
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('wrapper');
 
+         const banner = this.createPledgeHeader();
+        const descriptionSection = document.createElement('p');
+        descriptionSection.classList.add('card-desc');
+        descriptionSection.textContent = this.description;
 
-        const div = document.createElement('div');
-        const firstSection = this.createPledgeHeader();
-        const secondSection = document.createElement('p');
-        secondSection.textContent = this.description;
-        const remainingPledges = document.createElement('p');
-        remainingPledges.innerHTML = `
-           <span class='pledges-left'>${this.pledgeNumber}</span>
-           left
-        `;
+        const pledgesLeft = document.createElement('p');
+        pledgesLeft.classList.add('left-pledges');
+        
+        if (this.pledgeNumber >= 0) {
+            pledgesLeft.innerHTML = `
+            <span class="pledge-length">${this.pledgeNumber}</span>
+            left
+            `;
+        }
+       
+        
+        wrapper.appendChild(banner);
+        wrapper.appendChild(descriptionSection);
+        wrapper.appendChild(pledgesLeft);
 
-        div.appendChild(firstSection);
-        div.appendChild(secondSection);
-        div.appendChild(remainingPledges);
+        return wrapper;
 
-
-        label.appendChild(div);
-
-        return label;
     }
 
     createPledgeCard() {
-        const card = this.createCardContent();
-        card.classList.add('card');
+        const label = document.createElement('label');
+        label.classList.add('pledge-article', 'card');
+        label.setAttribute('for', this.name);
+
+        const content = this.createCardContent();
+        label.appendChild(content);
 
         if (!this.isActive) {
-            card.classList.add('inactive');
+            label.classList.add('inactive');
         }
 
-        return card;
+        return label;
     }
 }
 

@@ -1,7 +1,11 @@
 import { PledgeCard } from "./label.js";
-export function createModalDefault() {
+import { getPledgeData } from "./getData.js";
+export async function createModalDefault() {
     const modal = document.createElement('article');
-    modal.setAttribute('class', 'modal-default');
+    modal.classList.add('modal-default');
+
+    const innerModal = document.createElement('div');
+    innerModal.classList.add('inner-modal');
     
     const heading = document.createElement('h2');
     heading.textContent = 'Back this project';
@@ -9,41 +13,17 @@ export function createModalDefault() {
     const para = document.createElement('p');
     para.textContent = 'Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?';
 
-    // fetch the pledge information options..
-    async function getPledgeData() {
-        try {
-            const response = await fetch('/data.json');
-           
-            if(!response.ok) {
-                throw new Error('Failed to get pledge information');
-            } else {
-                const data = await response.json();
-                console.log(data);
+    innerModal.appendChild(heading);
+    innerModal.appendChild(para);
 
-                const container = document.createElement('div');
-                container.classList.add('backing-container');
-
-                data.forEach(item => {
-                    const card = new PledgeCard(item.pledgeType, item.description, item.pledgeNumber, item.pledgeAmount, item.isActive);
-
-                    const elem = card.createPledgeCard();
-                    container.appendChild(elem);
-                })
-
-                return container;
-            }
-        } catch (err) {
-            console.error('Failed to get promise information', err.message);
-        }
+    try {
+        const pledgeDataContainer = await getPledgeData();
+        innerModal.appendChild(pledgeDataContainer);
+    } catch (err) {
+        console.error('Failed to append pledge data', err.message);
     }
 
-    /*
-    The above async function returns a promise so next time I am going to return the result of the operation... 
-    */
-
-    modal.appendChild(heading);
-    modal.appendChild(para);
-    // modal.appendChild(item);
-
+    modal.appendChild(innerModal);
+    
     return modal;
 }

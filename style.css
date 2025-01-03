@@ -345,6 +345,7 @@ h3 {
 .pledge-header {
     display: flex;
     gap: 1.4rem;
+    align-items: center;
 }
 
 /* For radio button customization I got the below code at
@@ -401,7 +402,7 @@ label:hover {
 }
 
 .pledge-article {
-    border: 0.1rem solid var(--Dark-gray);
+    border: 0.18rem solid gainsboro;
     display: block;
     border-radius: 0.8rem;
 }
@@ -410,12 +411,41 @@ label:hover {
     margin: 1.8rem 0;
 }
 
+.completed-wrapper {
+    background-color: white;
+    padding: 2.2rem;
+    margin: 2.2rem;
+    border-radius: 1.2rem;
+    max-width: 35.0rem;
+    height: fit-content;
+    text-align: center;
+    position: absolute;
+    top:  20.5rem;
+    left: 0;
+    right: 0;
+}
+
+.completed-wrapper img {
+    margin-bottom: 2.0rem;
+}
+
+.confirm-btn {
+    margin-top: 2.0rem;
+}
+
+.selected {
+    border-color: var(--Moderate-cyan);
+}
 
 @media screen and (min-width: 500px) {
     .wrapper .left-pledges {
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    .completed-wrapper {
+        margin: auto;
     }
 }
 
